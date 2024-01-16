@@ -3,7 +3,6 @@ import {
   Line,
   LineChart,
   ResponsiveContainer,
-  Tooltip,
   XAxis,
   YAxis,
 } from 'recharts'
@@ -75,6 +74,8 @@ export function ReveneueChart() {
                 })
               }
             />
+            <CartesianGrid vertical={false} className="stroke-muted" />
+
             <Line
               type="linear"
               strokeWidth={2}
