@@ -10,15 +10,19 @@ export interface GetOrdersResponse {
   }[]
   meta: {
     pageIndex: number
-    pageSize: number
+    perPage: number
     totalCount: number
   }
 }
 
-export async function getOrders() {
+export interface GetOrderQuery {
+  pageIndex?: number | null
+}
+
+export async function getOrders({ pageIndex }: GetOrderQuery) {
   const response = await api.get<GetOrdersResponse>('/orders', {
     params: {
-      pageIndex: 0,
+      pageIndex,
     },
   })
 
