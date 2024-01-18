@@ -17,12 +17,23 @@ export interface GetOrdersResponse {
 
 export interface GetOrderQuery {
   pageIndex?: number | null
+  orderId: string | null
+  customerName: string | null
+  status: string | null
 }
 
-export async function getOrders({ pageIndex }: GetOrderQuery) {
+export async function getOrders({
+  pageIndex,
+  customerName,
+  status,
+  orderId,
+}: GetOrderQuery) {
   const response = await api.get<GetOrdersResponse>('/orders', {
     params: {
       pageIndex,
+      orderId,
+      customerName,
+      status,
     },
   })
 
