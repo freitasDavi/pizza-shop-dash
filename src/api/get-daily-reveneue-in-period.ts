@@ -5,9 +5,23 @@ export type GetDailyReveneueInPeriodResponse = {
   receipt: number
 }[]
 
-export async function getDailyReveneueInPeriod() {
+interface GetDailyReveneueInPeriodQuery {
+  from?: Date
+  to?: Date
+}
+
+export async function getDailyReveneueInPeriod({
+  from,
+  to,
+}: GetDailyReveneueInPeriodQuery) {
   const response = await api.get<GetDailyReveneueInPeriodResponse>(
     '/metrics/daily-receipt-in-period',
+    {
+      params: {
+        from,
+        to,
+      },
+    },
   )
 
   return response.data
